@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>サイトブロッカー</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>サイトブロッカー</h1>
+      <div class="toggle-container">
+        <label class="switch">
+          <input type="checkbox" id="extensionToggle">
+          <span class="slider"></span>
+        </label>
+        <span>拡張機能の有効化</span>
+      </div>
+    </div>
+
+    <div class="tabs">
+      <button class="tab-button active" data-tab="block-sites">サイト管理</button>
+      <button class="tab-button" data-tab="time-settings">時間設定</button>
+      <button class="tab-button" data-tab="pomodoro">ポモドーロ</button>
+    </div>
+
+    <div class="tab-content" id="block-sites">
+      <div class="add-site-form">
+        <input type="text" id="siteUrl" placeholder="URLを入力">
+        <input type="text" id="siteName" placeholder="サイト名を入力">
+        <button id="addSite">追加</button>
+      </div>
+      <div class="blocked-sites">
+        <h3>ブロック中のサイト</h3>
+        <ul id="blockedSitesList"></ul>
+      </div>
+      <div class="youtube-shorts-block">
+        <label>
+          <input type="checkbox" id="shortsToggle">
+          YouTube Shortsをブロック
+        </label>
+      </div>
+    </div>
+
+    <div class="tab-content hidden" id="time-settings">
+      <div class="time-block-settings">
+        <h3>時間帯ブロック</h3>
+        <div class="time-range-input">
+          <input type="time" id="startTime">
+          <span>から</span>
+          <input type="time" id="endTime">
+          <button id="addTimeRange">追加</button>
+        </div>
+        <ul id="timeRangesList"></ul>
+      </div>
+      <div class="duration-block-settings">
+        <h3>期間ブロック</h3>
+        <div class="duration-input">
+          <input type="number" id="hours" min="0" placeholder="時間">
+          <input type="number" id="minutes" min="0" max="59" placeholder="分">
+          <button id="addDuration">設定</button>
+        </div>
+        <ul id="durationList"></ul>
+      </div>
+    </div>
+
+    <div class="tab-content hidden" id="pomodoro">
+      <div class="pomodoro-timer">
+        <div class="timer-display">
+          <span id="timerMinutes">25</span>:<span id="timerSeconds">00</span>
+        </div>
+        <div class="timer-controls">
+          <button id="startTimer">開始</button>
+          <button id="stopTimer">停止</button>
+          <button id="resetTimer">リセット</button>
+        </div>
+      </div>
+      <div class="pomodoro-settings">
+        <h3>設定</h3>
+        <div class="setting-item">
+          <label>作業時間 (分)</label>
+          <input type="number" id="workDuration" value="25">
+        </div>
+        <div class="setting-item">
+          <label>休憩時間 (分)</label>
+          <input type="number" id="breakDuration" value="5">
+        </div>
+        <div class="setting-item">
+          <label>長い休憩 (分)</label>
+          <input type="number" id="longBreakDuration" value="15">
+        </div>
+        <div class="setting-item">
+          <label>長い休憩までのセッション数</label>
+          <input type="number" id="sessionsUntilLongBreak" value="4">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="status-message" class="status-message"></div>
+  <script src="popup.js"></script>
+</body>
+</html> 
